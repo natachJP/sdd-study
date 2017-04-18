@@ -6,8 +6,8 @@ CREATE TABLE `student_answer` (
   `score` INT NOT NULL,
   `result` BOOLEAN NOT NULL,
   `message` TEXT NOT NULL,
-  `createdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `lastupdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18,8 +18,8 @@ CREATE TABLE `assignment` (
   `duedate` date NOT NULL,
   `active` BOOLEAN NOT NULL,
   `deleted` BOOLEAN NOT NULL,
-  `createdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `lastupdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -32,8 +32,8 @@ CREATE TABLE `question` (
   `score` int(3) NOT NULL,
   `active` BOOLEAN NOT NULL,
   `deleted` BOOLEAN NOT NULL,
-  `createdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `lastupdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -42,16 +42,16 @@ CREATE TABLE `test_case` (
   `question_id` INT NOT NULL,
   `input` TEXT NOT NULL,
   `output` TEXT NOT NULL,
-  `createdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `lastupdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `role` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `createdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `lastupdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -59,15 +59,16 @@ CREATE TABLE `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `role_id` INT NOT NULL,
   `user` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` TEXT NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `active` BOOLEAN NOT NULL,
   `deleted` BOOLEAN NOT NULL,
   `regisdate` date NOT NULL,
-  `createdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `lastupdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `remember_token` TEXT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -76,8 +77,8 @@ CREATE TABLE `comment` (
   `student_answer_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   `comment` TEXT NOT NULL,
-  `createdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `lastupdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -86,14 +87,14 @@ CREATE TABLE `sub_comment` (
   `comment_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   `comment` TEXT NOT NULL,
-  `createdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `lastupdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `role` (`name`, `createdate`, `lastupdate`) VALUES ('ADMIN', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO `role` (`name`, `created_at`, `updated_at`) VALUES ('ADMIN', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO `user` ( `role_id`, `user`, `password`, `firstname`, `lastname`, `email`, `active`, `deleted`, `regisdate`, `createdate`, `lastupdate`) VALUES ( '1', 'admin', 'admin', 'admin', 'admin', 'admin@admin.com', '1', '0', '2017-04-03', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO `user` ( `role_id`, `user`, `password`, `firstname`, `lastname`, `email`, `active`, `deleted`, `regisdate`, `created_at`, `updated_at`) VALUES ( '1', 'admin', '$2y$10$6YdJ84G0ZY8n1oKnir.Hw.vZcLrH19r1./w.xEGu1u1zFFq9M4cJ2', 'David', 'Williams', 'admin@admin.com', '1', '0', '2017-04-03', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 ALTER TABLE `user` ADD CONSTRAINT `role_fk_id` FOREIGN KEY (`role_id`) REFERENCES `role`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 

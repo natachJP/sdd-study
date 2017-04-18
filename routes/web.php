@@ -11,17 +11,28 @@
 |
 */
 
-Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('auth/login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
+Route::post('auth/login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@login']);
+Route::get('auth/logout', [ 'as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
-Route::get('/', function () {
-    return session_save_path();//phpinfo();//view('welcome');
-});
+//Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('login',array('uses' => 'Auth\LoginController@showLogin'));
 
-Route::post('login',array('uses' => 'Auth\LoginController@doLogin'));
 
-//Route::group(['middleware' => 'auth'], function () {
+//Route::get('login',array('as' => 'login' , 'uses' => 'Auth\LoginController@showLogin'));
+
+//Route::post('login',array('as' => 'login' , 'uses' => 'Auth\LoginController@doLogin'));
+
+  //Route::get('/', function () {
+  //      return session_save_path();//phpinfo();//view('welcome');
+   // });
+    
+Route::group(['middleware' => 'auth'], function () {
+  
+    Route::get('/', function () {
+        $d = Auth::check();
+        return view('home');//session_save_path();//phpinfo();//view('welcome');
+    });
 //
 //    //Route::get('/test/{id}','Dashboard\DashboardController@test');
 //    
@@ -31,4 +42,4 @@ Route::post('login',array('uses' => 'Auth\LoginController@doLogin'));
 //
 //    Route::get('/home' , array('uses' => 'DashboardController@home'));
 //
-//});
+});
