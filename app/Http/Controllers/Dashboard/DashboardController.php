@@ -22,12 +22,12 @@ class DashboardController extends Controller
 		return view('home', ['name' => 'James']);
 	}
 	
-	public function test($id){
-		
-		
-		return User::findOrFail($id);
-		//return $results = app('db')->select("SELECT * FROM user WHERE id=".$id);
-	}
+	//public function test($id){
+	//	
+	//	
+	//	return User::findOrFail($id);
+	//	//return $results = app('db')->select("SELECT * FROM user WHERE id=".$id);
+	//}
 	
 	//
 }

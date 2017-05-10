@@ -45,13 +45,12 @@
                     
                 </li>
                 <li class="active">
-                    <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Main view</span></a>
+                    <a href="{{ route('home') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
                 </li>
                 <li>
-                    <a href="minor.html"><i class="fa fa-th-large"></i> <span class="nav-label">Minor view</span> </a>
+                    <a href="{{ route('assignment') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Assignment</span> </a>
                 </li>
             </ul>
-
         </div>
     </nav>
 

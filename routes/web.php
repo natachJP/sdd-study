@@ -29,12 +29,13 @@ Route::get('auth/logout', [ 'as' => 'logout', 'uses' => 'Auth\LoginController@lo
     
 Route::group(['middleware' => 'auth'], function () {
   
-    Route::get('/', function () {
-        $d = Auth::check();
-        return view('home');//session_save_path();//phpinfo();//view('welcome');
-    });
+    //Route::get('/', function () {
+    //    $d = Auth::check();
+    //    return view('home');//session_save_path();//phpinfo();//view('welcome');
+    //});
 //
-//    //Route::get('/test/{id}','Dashboard\DashboardController@test');
+    Route::get('/', array('as' => 'home' , 'uses' => 'Dashboard\DashboardController@home'));
+    Route::get('/assignment', array('as' => 'assignment' , 'uses' => 'Review\ReviewController@home'));
 //    
 //    Route::get('test/{id}', array('uses' => 'Dashboard\DashboardController@test'));
 //
