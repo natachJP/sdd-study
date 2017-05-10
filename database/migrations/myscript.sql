@@ -98,7 +98,7 @@ INSERT INTO `user` ( `role_id`, `user`, `password`, `firstname`, `lastname`, `em
 
 ALTER TABLE `user` ADD CONSTRAINT `role_fk_id` FOREIGN KEY (`role_id`) REFERENCES `role`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-ALTER TABLE `question` ADD CONSTRAINT `assignment_fk_id` FOREIGN KEY (`assignment_id`) REFERENCES `assignment`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;;
+ALTER TABLE `question` ADD CONSTRAINT `assignment_fk_id` FOREIGN KEY (`assignment_id`) REFERENCES `assignment`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 ALTER TABLE `test_case` ADD CONSTRAINT `question_fk_id` FOREIGN KEY (`question_id`) REFERENCES `question`(`id`) ON DELETE CASCADE ON UPDATE RESTRICT;
 
