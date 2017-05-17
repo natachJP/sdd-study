@@ -1,0 +1,16 @@
+.project-title.duedate {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.project-title a {
+    cursor: default;
+}
+
+.hurry {
+    color: red;
+}
+
+.hurry a {
+    color: red;
+}

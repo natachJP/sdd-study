@@ -40,29 +40,33 @@
 
                                 <table class="table table-hover">
                                     <tbody>
-                                        @foreach ($assign_data as $data)
+                                    
+                                        @foreach($assign_data as $data)
                                             <tr>
                                                 <td class="project-status">
-                                                    <span class="label label-primary">Active</span>
+                                                    @if($data->remainingDay < 0)
+                                                    <span class="label label-default">Done</span>
+                                                    @else
+                                                    <span class="label label-primary">Pending</span>
+                                                    @endif
                                                 </td>
                                                 <td class="project-title">
-                                                    <a href="project_detail.html">{{ $data->name }}</a>
+                                                    <a>{{ $data->name }}</a>
                                                     <br/>
-                                                    <small>Created {{ date_format($data->created_at,"d/m/Y") }}</small>
+                                                    <small>Created {{ date_format($data->created_at,"d-m-Y") }}</small>
                                                 </td>
                                                 <td class="project-completion">
-                                                {{ $data->student_answer[0]->name.'' }}
-                                                    <small>Completion with: 48%</small>
+                                                    <small>Completion with: {{$data->receivePercentage}}%</small>
                                                     <div class="progress progress-mini">
-                                                        <div style="width: 48%;" class="progress-bar"></div>
+                                                        <div style="width: {{$data->receivePercentage}}%;" class="progress-bar"></div>
                                                     </div>
                                                 </td>
-                                                <td class="project-people">
-                                                    <a href=""><img alt="image" class="img-circle" src="img/a3.jpg"></a>
-                                                    <a href=""><img alt="image" class="img-circle" src="img/a1.jpg"></a>
-                                                    <a href=""><img alt="image" class="img-circle" src="img/a2.jpg"></a>
-                                                    <a href=""><img alt="image" class="img-circle" src="img/a4.jpg"></a>
-                                                    <a href=""><img alt="image" class="img-circle" src="img/a5.jpg"></a>
+                                                <td class="project-title duedate {{ $data->remainingDay < 3 ? "hurry" : ""}}">
+                                                
+                                                    <a> {{ $data->remainingText }} </a>
+                                                    <br/>
+                                                    <small><i class="fa fa-clock-o"></i> Due Date {{ $data->duedate }} </small>
+                                                    
                                                 </td>
                                                 <td class="project-actions">
                                                     <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
