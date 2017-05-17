@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Review;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Assignment;
+use App\Question;
+use App\StudentAnswer;
 
-class ReviewController extends Controller
+class AssignmentController extends Controller
 {
 	
 	/**
@@ -19,7 +21,8 @@ class ReviewController extends Controller
 	}
 
 	public function home(){
-		return view('assignment');
+		$data =  Assignment::get();
+		return view('assignment', ['assign_data' => $data]);
 	}
 	
 	
