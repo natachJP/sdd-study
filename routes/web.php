@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
     //});
 //
     Route::get('/', array('as' => 'home' , 'uses' => 'Dashboard\DashboardController@home'));
-    Route::get('/assignment', array('as' => 'assignment' , 'uses' => 'Review\ReviewController@home'));
+    Route::get('/assignment', array('as' => 'assignment' , 'uses' => 'Review\AssignmentController@home'));
 //    
 //    Route::get('test/{id}', array('uses' => 'Dashboard\DashboardController@test'));
 //

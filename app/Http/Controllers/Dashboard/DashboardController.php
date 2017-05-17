@@ -19,7 +19,8 @@ class DashboardController extends Controller
 	}
 
 	public function home(){
-		return view('home', ['name' => 'James']);
+		return view('home');
+		
 	}
 	
 	//public function test($id){
