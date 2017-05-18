@@ -24,6 +24,12 @@ class AssignmentController extends Controller
 	public function home(){
 		$total =  User::where('role_id','=','2')->count();
 		$data =  Assignment::get()->each(function($item,$key) use ($total) {
+			$testww = Question::whereHas('student_answer',function($query) use ($item){
+				$query->where('assignment_id','=',$item->id);
+			})->get();
+			$testqw = StudentAnswer::with('question')->whereHas('question', function($query) use ($item){
+				$query->where('question.assignment_id','=',$item->id);
+			});
 			$receive = Question::getStudentAnswerByAssignmentId($item->id);
 			$item->receivePercentage = ($receive/$total)*100;
 			$future = strtotime( date("Y-m-d") ); 
