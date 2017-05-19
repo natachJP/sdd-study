@@ -34,8 +34,10 @@ Route::group(['middleware' => 'auth'], function () {
     //    return view('home');//session_save_path();//phpinfo();//view('welcome');
     //});
 //
-    Route::get('/', array('as' => 'home' , 'uses' => 'Dashboard\DashboardController@home'));
-    Route::get('/assignment', array('as' => 'assignment' , 'uses' => 'Review\AssignmentController@home'));
+    Route::get('/', array('as' => 'home' , 'uses' => 'Dashboard\DashboardController@Index'));
+    Route::get('/assignment', array('as' => 'assignment' , 'uses' => 'Review\AssignmentController@Index'));
+    Route::get('/assignment/{id}', array('as' => 'assignment-question' , 'uses' => 'Review\QuestionController@Index'));
+    Route::get('/assignment/{assignment_id}/Question/{id}', array('as' => 'assignment-question-answer' , 'uses' => 'Review\QuestionController@Index'));
 //    
 //    Route::get('test/{id}', array('uses' => 'Dashboard\DashboardController@test'));
 //

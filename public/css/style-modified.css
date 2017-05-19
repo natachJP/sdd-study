@@ -7,6 +7,12 @@
     cursor: default;
 }
 
+.project-completion .score{
+    display: inline-block;
+    width: 60px;
+    white-space: nowrap;
+}
+
 .hurry {
     color: red;
 }
@@ -14,3 +20,11 @@
 .hurry a {
     color: red;
 }
+
+.faq-answerer {
+    font-size: 18px;
+    font-weight: 600;
+    
+    display: block;
+}
+

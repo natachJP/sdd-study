@@ -3,10 +3,10 @@
 @section('content')
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
-            <h2>Project list</h2>
+            <h2>Assignment</h2>
             <ol class="breadcrumb">
                 <li>
-                    <a href="/">Home</a>
+                    <a href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="active">
                     <strong>Assignment</strong>
@@ -14,6 +14,8 @@
             </ol>
         </div>
     </div>
+
+        
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
@@ -28,7 +30,7 @@
                         <div class="ibox-content">
                             <div class="row m-b-sm m-t-sm">
                                 <div class="col-md-1">
-                                    <a href="/assignment" type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> Refresh</a>
+                                    <a href="{{ route('assignment') }}" type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> Refresh</a>
                                 </div>
                                 <div class="col-md-11">
                                     <div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
@@ -69,7 +71,7 @@
                                                     
                                                 </td>
                                                 <td class="project-actions">
-                                                    <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                                    <a href="{{ route('assignment-question', ['id' => $data->id]) }}" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -96,5 +98,4 @@
             </div>
         </div>
     </div>
-    
 @endsection

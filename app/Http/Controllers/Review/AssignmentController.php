@@ -21,34 +21,28 @@ class AssignmentController extends Controller
 		//
 	}
 
-	public function home(){
+	public function Index(){
 		$total =  User::where('role_id','=','2')->count();
 		$data =  Assignment::get()->each(function($item,$key) use ($total) {
-			$testww = Question::whereHas('student_answer',function($query) use ($item){
-				$query->where('assignment_id','=',$item->id);
-			})->get();
-			$testqw = StudentAnswer::with('question')->whereHas('question', function($query) use ($item){
-				$query->where('question.assignment_id','=',$item->id);
-			});
-			$receive = Question::getStudentAnswerByAssignmentId($item->id);
-			$item->receivePercentage = ($receive/$total)*100;
+			$receive = $this->GetNumberOfStudent($total,$item);
+			//$receive = Question::getStudentAnswerByAssignmentId($item->id);
+			$item->receivePercentage = $this->CalculateReceivePerentage($receive,$total);
 			$future = strtotime( date("Y-m-d") ); 
 			$timefromdb = strtotime("2017-05-19"); //Future date.
 			$diff = ($timefromdb - $future)/(60 * 60 * 24); 
 			$item->remainingText = ($diff < 0 ? "Time's Up!" : ($diff = 0  ? "Send it now!!" : $diff." day remaining"));
 			$item->remainingDay = $diff;
-
-			 
-
-
-			
-			//Question::where('assignment_id','=',$item->id)->withCount('student_answer')->get();
 		});
-		$qqq = Assignment::cursor();
-		
-		return view('assignment', ['assign_data' => $data]);
+		return view('assignment', ['assign_data' => $data->sortBy('remainingDay')]);
 	}
-	
-	
-	//
+
+	public function GetNumberOfStudent($total,$item){
+		return StudentAnswer::with('question')->whereHas('question', function($query) use ($item){
+				$query->where('question.assignment_id','=',$item->id);
+			})->select('user_id')->distinct('user_id')->count('user_id');
+	}
+
+	public function CalculateReceivePerentage($receive,$total){
+		return ($receive/$total)*100;
+	}
 }

@@ -1,0 +1,11 @@
+@media (max-width:685px){
+    .project-completion{
+        display:none;
+    }
+}
+
+@media (max-width:550px){
+    .project-title.duedate{
+        display:none;
+    }
+}
