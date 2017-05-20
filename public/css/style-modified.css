@@ -73,6 +73,10 @@
     display:none;
 }
 
-.social-form-comment{
-    padding:0px 15px;
+.edit-comment-form{
+    display:none;
+}
+
+.edit-subcomment-form{
+    display:none;
 }

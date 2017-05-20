@@ -22,7 +22,8 @@ class AnswerController extends Controller
 
     public function Index($id){
 		$data = StudentAnswer::with('comments.subcomments.user','comments.user','question')->find($id);
-		return view('answer', ['data' => $data]);
+		$currentUserId = Auth::user()->id;
+		return view('answer', ['data' => $data, 'currentUserId' => $currentUserId]);
     }
 
 	public function Comment($id,Request $request){
@@ -46,7 +47,30 @@ class AnswerController extends Controller
 
 		$subcomment->save();
 
-		return redirect()->route('assignment-question-answer', ['id' => $id]);
+		return 'true';//return redirect()->route('assignment-question-answer', ['id' => $id]);
+	}
+
+	public function UpdateComment($id,Request $request){
+		$comment = $request->comment;
+		Comment::find($id)->update(['comment'=> $comment]);
+		return 'true';
+	}
+
+	public function UpdateSubComment($id,Request $request){
+		
+		$comment = $request->comment;
+		SubComment::find($id)->update(['comment'=> $comment]);
+		return 'true';
+	}
+
+	public function DeleteComment($id){
+		Comment::find($id)->delete();
+		return 'true';
+	}
+
+	public function DeleteSubComment($id){
+		SubComment::find($id)->delete();
+		return 'true';
 	}
 
 }

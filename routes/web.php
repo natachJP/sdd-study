@@ -41,6 +41,17 @@ Route::group(['middleware' => 'auth'], function () {
     //Route::post('comment', array('as' => 'comment' , 'uses' => 'Review\AnswerController@ShowComment'));
     Route::post('/comment/{id}', array('as' => 'comment' , 'uses' => 'Review\AnswerController@Comment'));
     Route::post('/comment/{id}/{commentid}', array('as' => 'subcomment' , 'uses' => 'Review\AnswerController@SubComment'));
+
+    Route::put('/update/comment/{id}', array('as' => 'update-comment' , 'uses' => 'Review\AnswerController@UpdateComment'));
+    Route::put('/update/subcomment/{id}', array('as' => 'update-subcomment' , 'uses' => 'Review\AnswerController@UpdateSubComment'));
+
+    Route::delete('/delete/comment/{id}', array('as' => 'delete-comment' , 'uses' => 'Review\AnswerController@DeleteComment'));
+    Route::delete('/delete/subcomment/{id}', array('as' => 'delete-subcomment' , 'uses' => 'Review\AnswerController@DeleteSubComment'));
+    
+    Route::match(['get', 'post'],'/report/comment', array('as' => 'comment-report' , 'uses' => 'Review\ReportController@CommentReport'));
+    Route::get('/report/score', array('as' => 'score-report' , 'uses' => 'Review\ReportController@ScoreReport'));
+
+    
 //    
 //    Route::get('test/{id}', array('uses' => 'Dashboard\DashboardController@test'));
 //
