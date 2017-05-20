@@ -41,3 +41,38 @@
     -webkit-animation: bounceInUp 1s;
     -webkit-animation-delay: .2s;
 }
+
+.code-result{
+    background-color: #202020;
+    height: 100%;
+    color:white;
+    padding:10px;
+}
+
+.code-question h1,
+.code-question h2,
+.code-question h3,
+.code-question h4{
+    color:#179d82;
+}
+
+.code-question h1,
+.code-question h2,
+.code-question h3,
+.code-question h4,
+.code-question span{
+    font-weight: 100;
+    font-family: inherit;
+}
+
+.code-question-name{
+    padding-bottom:15px;
+}
+
+.sub-comment{
+    display:none;
+}
+
+.social-form-comment{
+    padding:0px 15px;
+}

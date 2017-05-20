@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class Question extends Model
 {
+    public $timestamps = true;
+
     protected $table = "question";
 
     protected $fillable = ['id','assignment_id','name','description','guideline','score','active','deleted','created_at','updated_at'];

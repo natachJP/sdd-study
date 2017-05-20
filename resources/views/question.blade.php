@@ -22,7 +22,7 @@
         <div class="ibox-content m-b-sm border-bottom">
             <div class="text-center p-lg">
                 <h2>instruction</h2>
-                <span>{{$instruction}}</span>
+                <span>{!! nl2br($instruction) !!}</span>
                 
             </div>
         </div>
@@ -45,7 +45,7 @@
                                 <table class="table table-hover">
                                     <tbody>
                                     
-                                       @foreach($data->student_answer->sortBy('updated_at') as $subdata)
+                                       @foreach($data->student_answer->sortByDesc('updated_at') as $subdata)
                                             <tr>
                                                 <td class="project-title">
                                                     <a>{{$subdata->user->firstname.' '.$subdata->user->lastname}}</a>

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Assignment extends Model
 {
+    public $timestamps = true;
+
     protected $table = "assignment";
 
     protected $fillable = ['id','name','description','duedate','active','deleted','created_at','updated_at'];

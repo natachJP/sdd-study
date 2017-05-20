@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/assignment', array('as' => 'assignment' , 'uses' => 'Review\AssignmentController@Index'));
     Route::get('/question/{id}', array('as' => 'assignment-question' , 'uses' => 'Review\QuestionController@Index'));
     Route::get('/answer/{id}', array('as' => 'assignment-question-answer' , 'uses' => 'Review\AnswerController@Index'));
+    //Route::post('comment', array('as' => 'comment' , 'uses' => 'Review\AnswerController@ShowComment'));
+    Route::post('/comment/{id}', array('as' => 'comment' , 'uses' => 'Review\AnswerController@Comment'));
+    Route::post('/comment/{id}/{commentid}', array('as' => 'subcomment' , 'uses' => 'Review\AnswerController@SubComment'));
 //    
 //    Route::get('test/{id}', array('uses' => 'Dashboard\DashboardController@test'));
 //
