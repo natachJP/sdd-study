@@ -27,9 +27,7 @@ class AssignmentController extends Controller
 			$receive = $this->GetNumberOfStudent($total,$item);
 			//$receive = Question::getStudentAnswerByAssignmentId($item->id);
 			$item->receivePercentage = $this->CalculateReceivePerentage($receive,$total);
-			$future = strtotime( date("Y-m-d") ); 
-			$timefromdb = strtotime("2017-05-19"); //Future date.
-			$diff = ($timefromdb - $future)/(60 * 60 * 24); 
+			$diff = $this->CalculateRemainingDay($item->duedate); 
 			$item->remainingText = ($diff < 0 ? "Time's Up!" : ($diff = 0  ? "Send it now!!" : $diff." day remaining"));
 			$item->remainingDay = $diff;
 		});
@@ -44,5 +42,11 @@ class AssignmentController extends Controller
 
 	public function CalculateReceivePerentage($receive,$total){
 		return ($receive/$total)*100;
+	}
+
+	public function CalculateRemainingDay($duedate){
+		$future = strtotime( date("Y-m-d") ); 
+		$timefromdb = strtotime($duedate); //Future date.
+		return $diff = ($timefromdb - $future)/(60 * 60 * 24); 
 	}
 }

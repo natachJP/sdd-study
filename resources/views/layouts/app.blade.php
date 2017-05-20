@@ -20,7 +20,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style-modified.css') }}" rel="stylesheet">
     <link href="{{ asset('css/responsive-modified.css') }}" rel="stylesheet">
-
+    @yield('css')
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -97,6 +97,6 @@
 
     <script src="{{ asset('js/inspinia.js') }}"></script>
     <script src="{{ asset('js/plugins/pace/pace.min.js') }}"></script>
-    
+     @yield('javascript')
 </body>
 </html>

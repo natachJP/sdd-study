@@ -28,3 +28,16 @@
     display: block;
 }
 
+.login-header{
+    -webkit-animation: bounceInUp 1s;
+}
+
+.login-content{
+    -webkit-animation: bounceInUp 1s;
+    -webkit-animation-delay: .1s;
+}
+
+.login-form{
+    -webkit-animation: bounceInUp 1s;
+    -webkit-animation-delay: .2s;
+}

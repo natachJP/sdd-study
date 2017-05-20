@@ -35,22 +35,18 @@
                 </div>
                 <div class="col-md-3">
                     <span class="h3">{{ $data->score }} <span class="small font-bold">Score</span></span>
-                    
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div id="{{$data->id}}" class="panel-collapse collapse ">
                         <div class="faq-answer">
                             <div class="project-list">
-
                                 <table class="table table-hover">
                                     <tbody>
                                     
                                        @foreach($data->student_answer->sortBy('updated_at') as $subdata)
                                             <tr>
-
                                                 <td class="project-title">
                                                     <a>{{$subdata->user->firstname.' '.$subdata->user->lastname}}</a>
                                                     <br/>
@@ -62,13 +58,10 @@
                                                     </div>
                                                 </td>
                                                 <td class="project-title duedate">
-                                                
-                                                    
                                                     <small><i class="fa fa-clock-o"></i>  {{ date_format($subdata->updated_at,'g:i a - d.m.Y') }} </small>
-                                                    
                                                 </td>
                                                 <td class="project-actions">
-                                                    <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                                    <a href="{{ route('assignment-question-answer', ['id' => $subdata->id]) }}" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
                                                 </td>
                                             </tr>
                                         @endforeach

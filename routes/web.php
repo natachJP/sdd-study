@@ -36,8 +36,8 @@ Route::group(['middleware' => 'auth'], function () {
 //
     Route::get('/', array('as' => 'home' , 'uses' => 'Dashboard\DashboardController@Index'));
     Route::get('/assignment', array('as' => 'assignment' , 'uses' => 'Review\AssignmentController@Index'));
-    Route::get('/assignment/{id}', array('as' => 'assignment-question' , 'uses' => 'Review\QuestionController@Index'));
-    Route::get('/assignment/{assignment_id}/Question/{id}', array('as' => 'assignment-question-answer' , 'uses' => 'Review\QuestionController@Index'));
+    Route::get('/question/{id}', array('as' => 'assignment-question' , 'uses' => 'Review\QuestionController@Index'));
+    Route::get('/answer/{id}', array('as' => 'assignment-question-answer' , 'uses' => 'Review\AnswerController@Index'));
 //    
 //    Route::get('test/{id}', array('uses' => 'Dashboard\DashboardController@test'));
 //

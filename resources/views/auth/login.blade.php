@@ -13,6 +13,7 @@
 
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style-modified.css') }}" rel="stylesheet">
     <style>
     *::-webkit-media-controls{
         display: none !important;
@@ -28,30 +29,34 @@
   
   <video wmode="transparent" controls="false" autoplay="" loop="" preload="" muted="" style="object-fit: fill; height: 100% !important" name="media"><source src="{{ asset('img/DarkStageFlare.mp4')}}" type="video/mp4"></video>
 </div>
-    <div class="middle-box text-center loginscreen animated fadeInDown">
+    <div class="middle-box text-center loginscreen">
         <div>
-            <div>
+            <div class="login-header">
 
-                <h1 class="logo-name">SE</h1>
+                <h1 class="logo-name ">SE</h1>
 
             </div>
-            <h3>Welcome to Code Review</h3>
-            <p>Perfectly code reviews and comments with web app views.
-                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
-            </p>
-            <p>Login in. To see it in action.</p>
-			{{ Form::open(array('url' => 'auth/login' , 'class' => 'm-t' , 'role' => 'form')) }}
-            
-                <div class="form-group">
-					{{ Form::text('user', Input::old('user'), array('placeholder' => 'Username' , 'required' => '' , 'class' => 'form-control')) }}
-                    
-                </div>
-                <div class="form-group">
-				{{ Form::password('password', array('placeholder' => 'Password' , 'required' => '' , 'class' => 'form-control')) }}
-                {{ Form::hidden('remember', true) }}
-                </div>
-				{{ Form::submit('Login',array('class' => 'btn btn-primary block full-width m-b')) }}
-			{{ Form::close() }}
+            <div class="login-content">
+                <h3>Welcome to Code Review</h3>
+                <p>Perfectly code reviews and comments with web app views.
+                    <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+                </p>
+                <p>Login in. To see it in action.</p>
+            </div>
+            <div class="login-form">
+			    {{ Form::open(array('url' => 'auth/login' , 'class' => 'm-t' , 'role' => 'form')) }}
+                
+                    <div class="form-group">
+			    		{{ Form::text('user', Input::old('user'), array('placeholder' => 'Username' , 'required' => '' , 'class' => 'form-control')) }}
+                        
+                    </div>
+                    <div class="form-group">
+			    	{{ Form::password('password', array('placeholder' => 'Password' , 'required' => '' , 'class' => 'form-control')) }}
+                    {{ Form::hidden('remember', true) }}
+                    </div>
+			    	{{ Form::submit('Login',array('class' => 'btn btn-primary block full-width m-b')) }}
+			    {{ Form::close() }}
+            </div>
                 <!--<a href="#"><small>Forgot password?</small></a>
                 <p class="text-muted text-center"><small>Do not have an account?</small></p>
                 <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
