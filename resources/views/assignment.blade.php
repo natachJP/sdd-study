@@ -27,16 +27,6 @@
                         </div>-->
                     </div>
                     <div class="ibox-content">
-                        <div class="row m-b-sm m-t-sm">
-                            <div class="col-md-1">
-                                <a href="{{ route('assignment') }}" type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> Refresh</a>
-                            </div>
-                            <div class="col-md-11">
-                                <div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
-                                <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
-                            </div>
-                        </div>
-
                         <div class="project-list">
 
                             <table class="table table-hover">
@@ -70,7 +60,14 @@
                                                 
                                             </td>
                                             <td class="project-actions">
+                                            @if(Auth::user()->role_id == 2)
+                                                @if($data->remainingDay < 0)
                                                 <a href="{{ route('assignment-question', ['id' => $data->id]) }}" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                                @endif
+                                            @else
+                                                <a href="{{ route('assignment-question', ['id' => $data->id]) }}" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                            @endif
+                                                
                                             </td>
                                         </tr>
                                     @endforeach

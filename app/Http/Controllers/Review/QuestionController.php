@@ -16,11 +16,16 @@ class QuestionController extends Controller
 	}
 
     public function Index($id){
-		$instruction = Assignment::find($id)->first()->description;
-		$data = Question::with('student_answer.user')->get()->each(function($item,$key){
+		$instruction = Assignment::find($id)->description;
+		$data = Question::where('assignment_id','=',$id)->with('student_answer.user')->get()->each(function($item,$key){
 			$first = $item->student_answer->sortByDesc('updated_at')->first();
-			$item->lastperson = $first->user->firstname.' '.$first->user->lastname;
-			$item->lasttime = date_format($first->updated_at,'g:i a - d.m.Y');
+			if($first == null){
+				$item->lastperson = "-";
+				$item->lasttime = "-";
+			}else{
+				$item->lastperson = $first->user->firstname.' '.$first->user->lastname;
+				$item->lasttime = date_format($first->updated_at,'g:i a - d.m.Y');
+			}
 		});
 		return view('question', ['question_data' => $data , 'instruction' => $instruction]);
     }

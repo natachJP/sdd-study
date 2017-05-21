@@ -44,7 +44,6 @@
                                 <li><a href="{{ route('logout') }}">Logout</a></li>
                             </ul>
                     </div>
-                    
                 </li>
                 <li class="active">
                     <a href="{{ route('home') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
@@ -52,13 +51,15 @@
                 <li>
                     <a href="{{ route('assignment') }}"><i class="fa fa-edit"></i> <span class="nav-label">Assignment</span> </a>
                 </li>
+                @if(Auth::user()->role_id != 2)
                 <li>
                 <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Report</span></a>
                     <ul class="nav nav-second-level">
                         <li><a href="{{ route('comment-report') }}">Comment</a></li>
                         <li><a href="{{ route('score-report') }}">Score</a></li>
                     </ul>
-                    </li>
+                </li>
+                @endif
             </ul>
         </div>
     </nav>

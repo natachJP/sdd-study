@@ -33,7 +33,7 @@ class AssignmentController extends Controller
 				$item->receivePercentage = $this->GetCompletion($item);
 			}
 			$diff = $this->CalculateRemainingDay($item->duedate); 
-			$item->remainingText = ($diff < 0 ? "Time's Up!" : ($diff = 0  ? "Send it now!!" : $diff." day remaining"));
+			$item->remainingText = ($diff < 0 ? "Time's Up!" : ($diff == 0  ? "Send it now!!" : $diff." day remaining"));
 			$item->remainingDay = $diff;
 		});
 		return view('assignment', ['assign_data' => $data->sortBy('remainingDay')]);
