@@ -65,8 +65,8 @@
                                             <td>{{ $item->studentanswer->question->name }}
                                             </td>
                                             <td>{{ $item->studentanswer->user->firstname }}</td>
-                                            <td class="center">{{ $item->created_at }}</td>
-                                            <td class="center">{{ $item->created_at }}</td>
+                                            <td class="center">{{ date_format($item->created_at ,'d.m.Y')}}</td>
+                                            <td class="center">{{ date_format($item->created_at ,'g:i a') }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
