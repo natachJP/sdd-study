@@ -13,7 +13,7 @@
                     <a href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="active">
-                    <strong>comment report</strong>
+                    <strong>comment report</strong> 
                 </li>
             </ol>
         </div>
