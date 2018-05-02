@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="row wrapper border-bottom white-bg page-heading">11
         <div class="col-sm-4">
             <h2>Comment Report</h2>
             <ol class="breadcrumb">
