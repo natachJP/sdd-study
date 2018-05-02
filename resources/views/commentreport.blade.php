@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="row wrapper border-bottom white-bg page-heading">11
+    <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
             <h2>Comment Report</h2>
             <ol class="breadcrumb">
@@ -20,7 +20,7 @@
     </div>
 
         
-    <div class="wrapper wrapper-content animated fadeInRight"> 
+    <div class="wrapper wrapper-content animated fadeInRight">   
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox">
